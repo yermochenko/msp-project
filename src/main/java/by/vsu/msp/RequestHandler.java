@@ -18,6 +18,6 @@ public class RequestHandler extends HttpServlet {
 		String[] colors = {"red", "green", "blue", "orange", "magenta", "cyan", "violet"};
 		Random random = new Random();
 		String color = colors[random.nextInt(colors.length)];
-		out.printf("<html><head><meta charset=\"UTF-8\"></head><body><p style=\"font-size: 200%%; background: yellow; border: 2px solid %s; border-radius: 10px; padding:15px;\">Hello, <b>World</b>!!!</p><p>Context deployment working</p></body></html>", color);
+		out.printf("<html><head><meta charset=\"UTF-8\"></head><body><p style=\"font-size: 200%%; background: yellow; border: 2px solid %s; border-radius: 10px; padding:15px;\">Hello, <b>World</b>!!!</p><p>Context deployment working</p><p><a href=\"note/list.html\">Список заметок</a></p></body></html>", color);
 	}
 }

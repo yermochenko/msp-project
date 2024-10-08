@@ -19,6 +19,24 @@
 		<url-pattern>/index.html</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>NoteListServlet</servlet-name>
+		<servlet-class>by.vsu.msp.controller.NoteListServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NoteListServlet</servlet-name>
+		<url-pattern>/note/list.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>NoteListViewServlet</servlet-name>
+		<servlet-class>by.vsu.msp.view.NoteListViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NoteListViewServlet</servlet-name>
+		<url-pattern>/WEB-INF/note/list.html</url-pattern>
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
