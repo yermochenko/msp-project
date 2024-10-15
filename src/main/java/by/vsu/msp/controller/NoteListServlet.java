@@ -15,6 +15,6 @@ public class NoteListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		List<Note> notes = NoteRepository.read();
 		req.setAttribute("notes", notes);
-		req.getRequestDispatcher("/WEB-INF/note/list.html").forward(req, resp);
+		req.getRequestDispatcher("/WEB-INF/jsp/note/list.jsp").forward(req, resp);
 	}
 }
