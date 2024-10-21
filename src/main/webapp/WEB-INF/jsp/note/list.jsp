@@ -1,21 +1,6 @@
 <%@page contentType="text/html;charset=UTF-8"%>
-
-<%@page import="java.util.List"%>
-<%@page import="by.vsu.msp.domain.Note"%>
-<%@page import="java.text.SimpleDateFormat"%>
-
-<%!
-	public static long filterActive(List<Note> notes) {
-		return notes.stream().filter(note -> !note.isDone()).count();
-	}
-%>
-
-<%
-	@SuppressWarnings("unchecked")
-	List<Note> notes = (List<Note>) request.getAttribute("notes");
-	SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-%>
-
+<%@taglib prefix="c" uri="jakarta.tags.core"%>
+<%@taglib prefix="fmt" uri="jakarta.tags.fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,24 +13,25 @@
 		</style>
 	</head>
 	<body>
-		<h1>Список заметок (JSP)</h1>
+		<h1>Список заметок (JSTL)</h1>
 		<ol>
-			<%
-				for(Note note : notes) {
-			%>
-			<li
-				<%
-					if(note.isDone()) {
-				%>
-					class="done"
-				<%
-					}
-				%>
-			><%= sdf.format(note.getDate()) %>, <%= note.getTitle() %></li>
-			<%
-				}
-			%>
+			<%--@elvariable id="notes" type="java.util.List"--%>
+			<c:forEach var="note" items="${notes}">
+				<%--@elvariable id="note" type="by.vsu.msp.domain.Note"--%>
+				<c:choose>
+					<c:when test="${note.done}">
+						<c:set var="cssClass" value="done"/>
+					</c:when>
+					<c:otherwise>
+						<c:remove var="cssClass"/>
+					</c:otherwise>
+				</c:choose>
+				<li class="${cssClass}">
+					<fmt:formatDate value="${note.date}" pattern="dd.MM.yyyy"/>, ${note.title}
+				</li>
+			</c:forEach>
 		</ol>
-		<p>Всего активных: <%= filterActive(notes) %></p>
+		<%--@elvariable id="activeNotesCount" type="java.lang.Integer"--%>
+		<p>Всего активных: ${activeNotesCount}</p>
 	</body>
 </html>
