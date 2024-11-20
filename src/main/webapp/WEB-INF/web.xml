@@ -9,6 +9,23 @@
 	<display-name>Пример для дисциплины СПП (ИСиТ 7 сем)</display-name>
 	<request-character-encoding>UTF-8</request-character-encoding>
 
+	<context-param>
+		<param-name>jdbc-driver</param-name>
+		<param-value>org.postgresql.Driver</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jdbc-url</param-name>
+		<param-value>jdbc:postgresql://localhost:5432/msp_project_db</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jdbc-user</param-name>
+		<param-value>root</param-value>
+	</context-param>
+	<context-param>
+		<param-name>jdbc-password</param-name>
+		<param-value>root</param-value>
+	</context-param>
+
 	<servlet>
 		<servlet-name>RequestHandler</servlet-name>
 		<servlet-class>by.vsu.msp.RequestHandler</servlet-class>
@@ -27,6 +44,10 @@
 		<servlet-name>NoteListServlet</servlet-name>
 		<url-pattern>/note/list.html</url-pattern>
 	</servlet-mapping>
+
+	<listener>
+		<listener-class>by.vsu.msp.web.ApplicationStartHandler</listener-class>
+	</listener>
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

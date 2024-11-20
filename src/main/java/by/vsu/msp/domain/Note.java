@@ -1,22 +1,12 @@
 package by.vsu.msp.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class Note implements Serializable {
-	private Integer id;
+public class Note extends Entity<Integer> {
 	private String title;
 	private String content;
 	private Date date;
 	private boolean done;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getTitle() {
 		return title;
