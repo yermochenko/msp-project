@@ -45,6 +45,24 @@
 		<url-pattern>/note/list.html</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>NoteEditServlet</servlet-name>
+		<servlet-class>by.vsu.msp.controller.NoteEditServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NoteEditServlet</servlet-name>
+		<url-pattern>/note/edit.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>NoteSaveServlet</servlet-name>
+		<servlet-class>by.vsu.msp.controller.NoteSaveServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NoteSaveServlet</servlet-name>
+		<url-pattern>/note/save.html</url-pattern>
+	</servlet-mapping>
+
 	<listener>
 		<listener-class>by.vsu.msp.web.ApplicationStartHandler</listener-class>
 	</listener>

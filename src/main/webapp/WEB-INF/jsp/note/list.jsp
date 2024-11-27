@@ -13,7 +13,7 @@
 		</style>
 	</head>
 	<body>
-		<h1>Список заметок (JSTL)</h1>
+		<h1>Список заметок</h1>
 		<ol>
 			<%--@elvariable id="notes" type="java.util.List"--%>
 			<c:forEach var="note" items="${notes}">
@@ -27,11 +27,16 @@
 					</c:otherwise>
 				</c:choose>
 				<li class="${cssClass}">
-					<fmt:formatDate value="${note.date}" pattern="dd.MM.yyyy"/>, ${note.title}
+					<c:url var="url_note_edit" value="/note/edit.html">
+						<c:param name="id" value="${note.id}"/>
+					</c:url>
+					<a href="${url_note_edit}"><fmt:formatDate value="${note.date}" pattern="dd.MM.yyyy"/>, ${note.title}</a>
 				</li>
 			</c:forEach>
 		</ol>
 		<%--@elvariable id="activeNotesCount" type="java.lang.Integer"--%>
 		<p>Всего активных: ${activeNotesCount}</p>
+		<c:url var="url_note_edit" value="/note/edit.html"/>
+		<p><a href="${url_note_edit}">Добавить новую заметку</a></p>
 	</body>
 </html>

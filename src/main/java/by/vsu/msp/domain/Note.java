@@ -5,7 +5,7 @@ import java.util.Date;
 public class Note extends Entity<Integer> {
 	private String title;
 	private String content;
-	private Date date;
+	private Date date = new Date();
 	private boolean done;
 
 	public String getTitle() {
