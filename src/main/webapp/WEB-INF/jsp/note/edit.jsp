@@ -50,9 +50,18 @@
 			</div>
 			<div>
 				<button type="submit">Сохранить</button>
+				<c:if test="${not empty note.id}">
+					<button type="submit" form="delete-form">Удалить</button>
+				</c:if>
 				<c:url var="url_note_list" value="/note/list.html"/>
 				<a href="${url_note_list}">Отменить</a>
 			</div>
 		</form>
+		<c:if test="${not empty note.id}">
+			<c:url var="url_note_delete" value="/note/delete.html"/>
+			<form id="delete-form" action="${url_note_delete}" method="post">
+				<input type="hidden" name="id" value="${note.id}">
+			</form>
+		</c:if>
 	</body>
 </html>

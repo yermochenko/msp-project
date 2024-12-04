@@ -63,6 +63,15 @@
 		<url-pattern>/note/save.html</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>NoteDeleteServlet</servlet-name>
+		<servlet-class>by.vsu.msp.controller.NoteDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NoteDeleteServlet</servlet-name>
+		<url-pattern>/note/delete.html</url-pattern>
+	</servlet-mapping>
+
 	<listener>
 		<listener-class>by.vsu.msp.web.ApplicationStartHandler</listener-class>
 	</listener>
