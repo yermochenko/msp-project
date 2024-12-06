@@ -1,17 +1,15 @@
 package by.vsu.msp.controller;
 
-import by.vsu.msp.dao.DaoException;
-import by.vsu.msp.dao.pgsql.DatabaseConnector;
-import by.vsu.msp.dao.pgsql.NoteDaoImpl;
 import by.vsu.msp.domain.Note;
+import by.vsu.msp.service.NoteService;
+import by.vsu.msp.service.ServiceException;
+import by.vsu.msp.service.ServiceFactory;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.Optional;
 
 public class NoteEditServlet extends HttpServlet {
@@ -20,16 +18,15 @@ public class NoteEditServlet extends HttpServlet {
 		if(idParam != null) {
 			try {
 				Integer id = Integer.parseInt(idParam);
-				try(Connection connection = DatabaseConnector.getConnection()) {
-					NoteDaoImpl noteDao = new NoteDaoImpl();
-					noteDao.setConnection(connection);
-					Optional<Note> note = noteDao.read(id);
+				try(ServiceFactory serviceFactory = ServiceFactory.newInstance()) {
+					NoteService noteService = serviceFactory.getNoteServiceInstance();
+					Optional<Note> note = noteService.findById(id);
 					if(note.isPresent()) {
 						req.setAttribute("note", note.get());
 					} else {
 						throw new IllegalArgumentException();
 					}
-				} catch(SQLException | DaoException e) {
+				} catch(ServiceException e) {
 					throw new ServletException(e);
 				}
 			} catch(IllegalArgumentException e) {
