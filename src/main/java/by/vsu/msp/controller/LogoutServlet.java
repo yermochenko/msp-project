@@ -1,6 +1,5 @@
-package by.vsu.msp;
+package by.vsu.msp.controller;
 
-import by.vsu.msp.domain.User;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -8,17 +7,13 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-public class RequestHandler extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		HttpSession session = req.getSession(false);
 		if(session != null) {
-			User user = (User) session.getAttribute("user");
-			if(user != null) {
-				resp.sendRedirect(req.getContextPath() + "/note/list.html");
-				return;
-			}
+			session.invalidate();
 		}
-		resp.sendRedirect(req.getContextPath() + "/about.html");
+		resp.sendRedirect(req.getContextPath());
 	}
 }

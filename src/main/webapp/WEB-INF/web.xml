@@ -72,6 +72,45 @@
 		<url-pattern>/note/delete.html</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>by.vsu.msp.controller.LoginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LoginServlet</servlet-name>
+		<url-pattern>/login.html</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>LogoutServlet</servlet-name>
+		<servlet-class>by.vsu.msp.controller.LogoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>LogoutServlet</servlet-name>
+		<url-pattern>/logout.html</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>SecurityFilter</filter-name>
+		<filter-class>by.vsu.msp.web.SecurityFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<url-pattern>/note/edit.html</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<url-pattern>/note/save.html</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<url-pattern>/note/delete.html</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<url-pattern>/logout.html</url-pattern>
+	</filter-mapping>
+
 	<listener>
 		<listener-class>by.vsu.msp.web.ApplicationStartHandler</listener-class>
 	</listener>

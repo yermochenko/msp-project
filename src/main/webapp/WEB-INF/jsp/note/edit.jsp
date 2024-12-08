@@ -23,6 +23,9 @@
 		</style>
 	</head>
 	<body>
+		<%--@elvariable id="user" type="by.vsu.msp.domain.User"--%>
+		<c:url var="url__logout" value="/logout.html"/>
+		<p>Добро пожаловать, ${user.login}. <a href="${url__logout}">Выйти</a></p>
 		<h1>${title}</h1>
 		<c:url var="url_note_save" value="/note/save.html"/>
 		<form action="${url_note_save}" method="post">
