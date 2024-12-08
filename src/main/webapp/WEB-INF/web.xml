@@ -28,9 +28,8 @@
 
 	<servlet>
 		<servlet-name>RequestHandler</servlet-name>
-		<servlet-class>by.vsu.msp.RequestHandler</servlet-class>
+		<servlet-class>by.vsu.msp.web.RequestHandler</servlet-class>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>RequestHandler</servlet-name>
 		<url-pattern>/index.html</url-pattern>

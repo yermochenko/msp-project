@@ -1,4 +1,4 @@
-package by.vsu.msp;
+package by.vsu.msp.web;
 
 import by.vsu.msp.domain.User;
 import jakarta.servlet.http.HttpServlet;
